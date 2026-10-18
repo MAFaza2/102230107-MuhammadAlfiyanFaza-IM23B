@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LevelUp | Top Up Game</title>
+<style>
+:root{--bg:#0b0b14;--panel:#141422;--panel2:#1c1b2d;--text:#f5f4ff;--muted:#a4a1bd;--purple:#9b72ff;--pink:#ff65b8;--line:#29273e;--green:#6ee7b7}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% -10%,#302052 0,transparent 32%),var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+button,input{font:inherit}button{cursor:pointer;border:0} .wrap{max-width:1180px;margin:auto;padding:0 24px}
+header{position:sticky;top:0;z-index:5;background:#0b0b14df;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{height:76px;display:flex;align-items:center;gap:30px}.logo{font-size:22px;font-weight:900;letter-spacing:-.7px;white-space:nowrap}.logo span{color:var(--purple)}.navlinks{display:flex;gap:22px;color:var(--muted)}.navlinks a{color:inherit;text-decoration:none}.search{margin-left:auto;max-width:300px;width:100%;position:relative}.search input{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:white;outline:none}.search input:focus{border-color:var(--purple)}.cart{background:var(--panel2);color:white;padding:11px 14px;border-radius:12px;white-space:nowrap}.hero{padding:52px 0 34px;display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:center}.eyebrow{color:#c5b4ff;font-weight:700;font-size:12px;letter-spacing:1.6px;text-transform:uppercase}.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.06;letter-spacing:-2px;margin:14px 0}.hero h1 span{background:linear-gradient(90deg,#bba3ff,#ff8dcc);background-clip:text;color:transparent}.hero p{color:var(--muted);max-width:540px;font-size:16px}.primary{background:linear-gradient(100deg,var(--purple),#7957ec);color:white;border-radius:12px;padding:13px 18px;font-weight:750;box-shadow:0 8px 24px #7855e633}.secondary{background:var(--panel2);border:1px solid var(--line);color:white;border-radius:12px;padding:13px 18px;font-weight:700}.hero-actions{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}.hero-card{border:1px solid #4c3a70;background:linear-gradient(145deg,#29203e,#151322 70%);border-radius:24px;padding:24px;min-height:245px;position:relative;overflow:hidden}.hero-card:after{content:"✦";position:absolute;font-size:190px;right:8px;top:-40px;color:#a78bfa19}.hero-card .big{font-size:48px}.hero-card h3{font-size:22px;margin:12px 0 4px}.hero-card p{margin:0;font-size:14px}.section{padding:26px 0 12px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:18px}.section h2{font-size:24px;letter-spacing:-.5px;margin:0}.sub{color:var(--muted);font-size:13px;margin-top:4px}.chips{display:flex;gap:9px;overflow:auto;padding:2px 0 8px}.chip{background:var(--panel);border:1px solid var(--line);color:var(--muted);padding:9px 14px;border-radius:999px;white-space:nowrap}.chip.active,.chip:hover{background:#30244a;color:#e9ddff;border-color:#7957bd}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.product{background:linear-gradient(160deg,#181728,#11111c);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.2s;min-width:0}.product:hover{transform:translateY(-4px);border-color:#67518e}.art{height:130px;display:grid;place-items:center;font-size:52px;position:relative;background:radial-gradient(circle at 50% 40%,var(--glow,#6243a5),#191526 68%)}.art:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#14132188,transparent)}.tag{position:absolute;z-index:1;top:11px;left:11px;font-size:10px;font-weight:800;background:#ff65b8;color:#240c1b;border-radius:6px;padding:5px 7px}.tag.purple{background:#c4b5fd;color:#26154b}.tag.green{background:#a7f3d0;color:#083b2c}.product-body{padding:15px}.game{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.8px}.product h3{font-size:15px;margin:5px 0 3px}.desc{font-size:12px;color:var(--muted);min-height:18px}.price-row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:14px}.price{font-weight:850}.add{width:34px;height:34px;border-radius:10px;background:#30244a;color:#e4d9ff;font-size:22px}.add:hover{background:var(--purple);color:white}.why{display:flex;gap:8px;align-items:center;color:#c4b5fd;font-size:11px;margin-top:11px}.empty{display:none;padding:32px;color:var(--muted);text-align:center;grid-column:1/-1}.note{border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:17px 20px;color:var(--muted);font-size:13px;margin:25px 0 40px}.note strong{color:var(--text)}footer{border-top:1px solid var(--line);padding:24px 0 35px;color:var(--muted);font-size:12px}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#242039;border:1px solid #5c4785;color:white;padding:12px 18px;border-radius:12px;transition:.25s;z-index:9}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:850px){.navlinks{display:none}.hero{grid-template-columns:1fr}.hero-card{min-height:180px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.search{max-width:none}.nav{gap:14px}.logo{font-size:19px}}
+@media(max-width:480px){.wrap{padding:0 15px}.nav{height:66px;gap:10px}.search input{padding:10px;font-size:12px}.cart{padding:10px;font-size:12px}.hero{padding-top:34px}.grid{gap:10px}.art{height:108px;font-size:42px}.product-body{padding:11px}.product h3{font-size:13px}.price{font-size:13px}.section h2{font-size:21px}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <div class="logo">LEVEL<span>UP</span> ⚡</div>
+  <nav class="navlinks"><a href="#produk">Top Up</a><a href="#rekomendasi">Rekomendasi</a><a href="#tentang">Tentang</a></nav>
+  <div class="search"><input id="search" type="search" placeholder="Cari game atau produk..." aria-label="Cari game atau produk"></div>
+  <button class="cart" id="cartBtn">🛒 <span id="cartCount">0</span></button>
+</div></header>
+<main class="wrap">
+  <section class="hero">
+    <div><div class="eyebrow">Top up cepat • Main lebih jauh</div><h1>Isi ulang. <span>Naik level.</span></h1><p>Temukan paket top up yang cocok buat gaya mainmu. Pilihan favorit dan rekomendasi dalam satu tempat.</p><div class="hero-actions"><button class="primary" onclick="document.querySelector('#produk').scrollIntoView({behavior:'smooth'})">Jelajahi produk ↗</button><button class="secondary" onclick="document.querySelector('#rekomendasi').scrollIntoView({behavior:'smooth'})">Lihat rekomendasi</button></div></div>
+    <div class="hero-card"><div class="big">🎮 💎</div><h3>Game favorit, pilihan lebih pas.</h3><p>Rekomendasi disesuaikan dengan kategori yang kamu pilih dan interaksi di halaman ini.</p></div>
+  </section>
+  <section class="section" id="rekomendasi">
+    <div class="section-head"><div><div class="eyebrow">Dibuat untukmu</div><h2>Rekomendasi pilihan ✨</h2><div class="sub">Contoh rekomendasi berbasis kategori dan produk populer.</div></div></div>
+    <div class="grid" id="recommendGrid"></div>
+  </section>
+  <section class="section" id="produk">
+    <div class="section-head"><div><h2>Jelajahi produk</h2><div class="sub">Pilih game dan temukan paket top up.</div></div></div>
+    <div class="chips" id="chips">
+      <button class="chip active" data-cat="Semua">Semua game</button><button class="chip" data-cat="Mobile Legends">Mobile Legends</button><button class="chip" data-cat="Free Fire">Free Fire</button><button class="chip" data-cat="PUBG Mobile">PUBG Mobile</button><button class="chip" data-cat="Valorant">Valorant</button>
+    </div>
+    <div class="grid" id="productGrid"></div>
+  </section>
+  <div class="note" id="tentang"><strong>💡 Catatan prototipe:</strong> rekomendasi saat ini masih berupa simulasi di browser. Untuk personalisasi sungguhan, hubungkan ke API backend yang menghitung skor dari riwayat pembelian, klik, game favorit, harga, dan popularitas produk. Harga serta item di halaman ini adalah data contoh.</div>
+</main>
+<footer><div class="wrap">© 2026 LevelUp UI Demo · Tampilan prototipe, belum terhubung ke pembayaran.</div></footer>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const products = [
+{id:1,game:"Mobile Legends",name:"86 Diamonds",detail:"Paket hemat untuk mulai push rank",price:20000,icon:"💎",glow:"#553e8d",tag:"Favorit",why:"Populer di pemain ML"},
+{id:2,game:"Free Fire",name:"140 Diamonds",detail:"Tambah koleksi item favorit",price:19000,icon:"🔥",glow:"#8d442c",tag:"Populer",why:"Sering dibeli"},
+{id:3,game:"PUBG Mobile",name:"60 UC",detail:"Paket UC untuk kebutuhan ringan",price:16000,icon:"🪖",glow:"#74602c",tag:"Hemat",why:"Pilihan harga terjangkau"},
+{id:4,game:"Valorant",name:"125 VP",detail:"Tambah Valorant Points",price:15000,icon:"🎯",glow:"#8c3557",tag:"",why:"Sesuai kategori favorit"},
+{id:5,game:"Mobile Legends",name:"172 Diamonds",detail:"Pilihan untuk pemain aktif",price:39000,icon:"⚔️",glow:"#553e8d",tag:"Rekomendasi",why:"Cocok untuk pemain aktif"},
+{id:6,game:"Free Fire",name:"355 Diamonds",detail:"Lebih banyak diamond dalam satu paket",price:47000,icon:"🚀",glow:"#8d442c",tag:"",why:"Paket populer"},
+{id:7,game:"PUBG Mobile",name:"325 UC",detail:"Pilihan paket menengah",price:79000,icon:"🎖️",glow:"#74602c",tag:"",why:"Alternatif paket menengah"},
+{id:8,game:"Valorant",name:"420 VP",detail:"Paket VP untuk koleksi skin",price:50000,icon:"✨",glow:"#8c3557",tag:"",why:"Sering dilihat pemain Valorant"}
+];
+let category="Semua", query="", cart=[];
+const rupiah=n=>new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(n);
+function card(p,recommended=false){return `<article class="product"><div class="art" style="--glow:${p.glow}"><span>${p.icon}</span>${p.tag?`<span class="tag ${p.tag==='Hemat'?'green':p.tag==='Rekomendasi'?'purple':''}">${p.tag}</span>`:""}</div><div class="product-body"><div class="game">${p.game}</div><h3>${p.name}</h3><div class="desc">${p.detail}</div><div class="price-row"><div class="price">${rupiah(p.price)}</div><button class="add" aria-label="Tambah ${p.name} ke keranjang" onclick="addCart(${p.id})">+</button></div>${recommended?`<div class="why">✦ ${p.why}</div>`:""}</div></article>`}
+function render(){const filtered=products.filter(p=>(category==="Semua"||p.game===category)&&(p.game+" "+p.name+" "+p.detail).toLowerCase().includes(query.toLowerCase()));document.getElementById("productGrid").innerHTML=filtered.length?filtered.map(p=>card(p)).join(""):'<div class="empty" style="display:block">Produk tidak ditemukan. Coba kata kunci lain.</div>';
+// Demo ranking: prioritize chosen category; when none is selected, show a curated popular mix.
+const ranked=[...products].sort((a,b)=>{const ac=category!=="Semua"&&a.game===category?1:0,bc=category!=="Semua"&&b.game===category?1:0;return bc-ac||a.price-b.price}).filter(p=>(p.game+" "+p.name+" "+p.detail).toLowerCase().includes(query.toLowerCase())).slice(0,4);
+document.getElementById("recommendGrid").innerHTML=ranked.length?ranked.map(p=>card(p,true)).join():'<div class="empty" style="display:block">Belum ada rekomendasi untuk pencarian ini.</div>'}
+document.getElementById("search").addEventListener("input",e=>{query=e.target.value;render()});
+document.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>{category=b.dataset.cat;document.querySelectorAll(".chip").forEach(x=>x.classList.toggle("active",x===b));render()}));
+function addCart(id){const p=products.find(x=>x.id===id);cart.push(p);document.getElementById("cartCount").textContent=cart.length;showToast(`${p.name} ditambahkan ke keranjang`)}
+document.getElementById("cartBtn").addEventListener("click",()=>{if(!cart.length){showToast("Keranjang masih kosong 🛒");return}const total=cart.reduce((s,p)=>s+p.price,0);showToast(`${cart.length} item · Total ${rupiah(total)} (demo)`);});
+let toastTimer;function showToast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove("show"),2500)}
+render();
+</script>
+</body>
+</html>
